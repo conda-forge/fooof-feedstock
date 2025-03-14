@@ -10,7 +10,7 @@ source:
   sha256: 6b38f28a8a9a787121d4741335ca4737c65d356dfbf64d9e5c04cd5510a5a72c
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
 
@@ -18,11 +18,11 @@ requirements:
   host:
     - numpy
     - pip
-    - python >=3.5
+    - python {{ python_min }}
     - scipy >=0.19.0
   run:
     - numpy
-    - python >=3.5
+    - python >={{ python_min }}
     - scipy >=0.19.0
 
 test:
@@ -47,6 +47,7 @@ test:
     - fooof.utils
   requires:
     - pytest
+    - python {{ python_min }}
 
 about:
   home: "https://github.com/fooof-tools/fooof"
